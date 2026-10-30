@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1c13">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'none'; upgrade-insecure-requests">
+    <title>Admin Dashboard Prototype | REEFER ROUT EMPIRE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+    <div class="admin-shell">
+        <aside class="admin-sidebar">
+            <a class="brand admin-brand" href="index.html" aria-label="Reefer Route Empire storefront">
+                <img class="brand-logo" src="assets/reefer-route-empire-logo.png" alt="">
+                <span class="brand-name">REEFER ROUT <span>EMPIRE</span></span>
+            </a>
+            <p class="admin-sidebar-label">MANAGEMENT</p>
+            <nav class="admin-nav" aria-label="Admin sections">
+                <button class="admin-nav-link is-active" type="button" data-view="overview"><span aria-hidden="true">⌂</span> Overview</button>
+                <button class="admin-nav-link" type="button" data-view="inventory"><span aria-hidden="true">▦</span> Inventory</button>
+                <button class="admin-nav-link" type="button" data-view="orders"><span aria-hidden="true">≡</span> Orders</button>
+                <button class="admin-nav-link" type="button" data-view="payments"><span aria-hidden="true">◇</span> Payments</button>
+                <button class="admin-nav-link" type="button" data-view="analytics"><span aria-hidden="true">▥</span> Analytics</button>
+                <button class="admin-nav-link" type="button" data-view="coupons"><span aria-hidden="true">％</span> Coupons</button>
+                <button class="admin-nav-link" type="button" data-view="accounts"><span aria-hidden="true">♙</span> Accounts</button>
+                <button class="admin-nav-link" type="button" data-view="integrations"><span aria-hidden="true">⌘</span> Integrations</button>
+            </nav>
+            <div class="admin-sidebar-bottom">
+                <span class="admin-demo-indicator"><span></span> PROTOTYPE MODE</span>
+                <a class="admin-store-link" href="index.html">← Back to storefront</a>
+            </div>
+        </aside>
+        <main class="admin-main">
+            <header class="admin-topbar">
+                <div><p class="eyebrow">REEFER ROUT EMPIRE / ADMIN</p><h1 id="view-title">Overview</h1></div>
+                <span class="admin-user-chip"><span class="admin-avatar">R</span><span>Demo Admin<small>Prototype account</small></span></span>
+            </header>
+            <div class="admin-warning" role="note"><strong>Prototype only:</strong> sample data and changes are stored in this browser. Admin authentication, shared database, and live payment verification are not connected.</div>
+            <div class="admin-notice" id="admin-notice" role="status" aria-live="polite" hidden></div>
+
+            <section class="admin-view is-visible" id="view-overview" aria-labelledby="view-title">
+                <div class="admin-section-intro"><div><p class="eyebrow">AT A GLANCE</p><h2>Empire overview</h2></div><button class="admin-button admin-button-quiet" type="button" data-action="reset">Reset demo data</button></div>
+                <div class="admin-metric-grid">
+                    <article class="admin-metric"><span class="admin-metric-label">Gross sales</span><strong id="metric-sales">$0</strong><small>Based on demo orders</small><span class="metric-icon" aria-hidden="true">$</span></article>
+                    <article class="admin-metric"><span class="admin-metric-label">Orders</span><strong id="metric-orders">0</strong><small>All sample order statuses</small><span class="metric-icon" aria-hidden="true">≡</span></article>
+                    <article class="admin-metric"><span class="admin-metric-label">Needs review</span><strong id="metric-review">0</strong><small>Manual payment review queue</small><span class="metric-icon" aria-hidden="true">◇</span></article>
+                    <article class="admin-metric"><span class="admin-metric-label">Low stock</span><strong id="metric-stock">0</strong><small>Items with 5 or fewer units</small><span class="metric-icon" aria-hidden="true">▦</span></article>
+                </div>
+                <div class="admin-overview-grid">
+                    <article class="admin-panel">
+                        <div class="admin-panel-heading"><div><p class="eyebrow">SALES SNAPSHOT</p><h3>Weekly revenue</h3></div><span class="demo-tag">DEMO DATA</span></div>
+                        <div class="sales-chart" aria-label="Illustrative demo revenue chart">
+                            <div class="chart-y-labels"><span>$600</span><span>$400</span><span>$200</span><span>$0</span></div>
+                            <div class="chart-columns">
+                                <div class="chart-column"><span class="chart-bar chart-bar-35"></span><span>Mon</span></div>
+                                <div class="chart-column"><span class="chart-bar chart-bar-58"></span><span>Tue</span></div>
+                                <div class="chart-column"><span class="chart-bar chart-bar-43"></span><span>Wed</span></div>
+                                <div class="chart-column"><span class="chart-bar chart-bar-78"></span><span>Thu</span></div>
+                                <div class="chart-column"><span class="chart-bar chart-bar-61"></span><span>Fri</span></div>
+                                <div class="chart-column"><span class="chart-bar chart-bar-92"></span><span>Sat</span></div>
+                                <div class="chart-column"><span class="chart-bar chart-bar-48"></span><span>Sun</span></div>
+                            </div>
+                        </div>
+                        <p class="admin-footnote">Illustrative chart only; connect sales data to a backend for live analytics.</p>
+                    </article>
+                    <article class="admin-panel">
+                        <div class="admin-panel-heading"><div><p class="eyebrow">ORDER FLOW</p><h3>Latest orders</h3></div><button class="admin-text-button" type="button" data-view-link="orders">All orders →</button></div>
+                        <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>ORDER</th><th>CUSTOMER</th><th>TOTAL</th><th>STATUS</th></tr></thead><tbody id="recent-orders"></tbody></table></div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="admin-view" id="view-inventory" aria-labelledby="inventory-title" hidden>
+                <div class="admin-section-intro"><div><p class="eyebrow">CATALOG CONTROL</p><h2 id="inventory-title">Product inventory</h2></div><button class="admin-button admin-button-primary" type="button" data-action="add-product">＋ Add demo product</button></div>
+                <div class="admin-panel"><div class="admin-panel-heading"><div><p class="eyebrow">STOREFRONT CATALOG</p><h3>Products &amp; stock</h3></div><span class="demo-tag">BROWSER-ONLY</span></div>
+                    <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>PRODUCT</th><th>CATEGORY</th><th>PRICE</th><th>STOCK</th><th>AVAILABILITY</th><th>ACTION</th></tr></thead><tbody id="inventory-rows"></tbody></table></div>
+                </div>
+            </section>
+
+            <section class="admin-view" id="view-orders" aria-labelledby="orders-title" hidden>
+                <div class="admin-section-intro"><div><p class="eyebrow">FULFILMENT</p><h2 id="orders-title">Order tracking</h2></div><label class="admin-search"><span class="sr-only">Search orders</span><input id="order-search" type="search" placeholder="Search order or customer"></label></div>
+                <div class="admin-panel"><div class="admin-panel-heading"><div><p class="eyebrow">CUSTOMER ORDERS</p><h3>Order queue</h3></div><span class="demo-tag">SAMPLE ORDERS</span></div>
+                    <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>ORDER</th><th>CUSTOMER</th><th>DATE</th><th>PAYMENT</th><th>TOTAL</th><th>FULFILMENT</th></tr></thead><tbody id="order-rows"></tbody></table></div>
+                </div>
+            </section>
+
+            <section class="admin-view" id="view-payments" aria-labelledby="payments-title" hidden>
+                <div class="admin-section-intro"><div><p class="eyebrow">PAYMENT OPERATIONS</p><h2 id="payments-title">Payment review</h2></div></div>
+                <div class="admin-warning admin-payment-warning"><strong>No provider connected.</strong> Bitcoin, Pi Network, M-Pesa, and bank transfer are not verified here. Review actions below only change sample data in this browser; connect a backend and provider APIs for real verification.</div>
+                <div class="admin-provider-grid"><div class="provider-card"><span class="payment-icon bitcoin-icon" aria-hidden="true">₿</span><div><strong>Bitcoin</strong><small>Not connected</small></div><span class="provider-offline">OFFLINE</span></div><div class="provider-card"><span class="payment-icon pi-icon" aria-hidden="true">π</span><div><strong>Pi Network</strong><small>Not connected</small></div><span class="provider-offline">OFFLINE</span></div><div class="provider-card"><span class="payment-icon mpesa-icon" aria-hidden="true">M</span><div><strong>M-Pesa</strong><small>Not connected</small></div><span class="provider-offline">OFFLINE</span></div><div class="provider-card"><span class="payment-icon bank-icon" aria-hidden="true">▤</span><div><strong>Bank transfer</strong><small>Manual proof only</small></div><span class="provider-offline">OFFLINE</span></div></div>
+                <div class="admin-panel"><div class="admin-panel-heading"><div><p class="eyebrow">SAMPLE TRANSACTIONS</p><h3>Manual review queue</h3></div></div>
+                    <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>ORDER</th><th>METHOD</th><th>AMOUNT</th><th>REFERENCE</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="payment-rows"></tbody></table></div>
+                </div>
+            </section>
+
+            <section class="admin-view" id="view-analytics" aria-labelledby="analytics-title" hidden>
+                <div class="admin-section-intro"><div><p class="eyebrow">BUSINESS PERFORMANCE</p><h2 id="analytics-title">Sales analytics</h2></div><span class="demo-tag">ILLUSTRATIVE ONLY</span></div>
+                <div class="admin-metric-grid">
+                    <article class="admin-metric"><span class="admin-metric-label">Gross sales</span><strong id="analytics-sales">$0</strong><small>Demo order totals</small></article>
+                    <article class="admin-metric"><span class="admin-metric-label">Average order</span><strong id="analytics-average">$0</strong><small>Demo data only</small></article>
+                    <article class="admin-metric"><span class="admin-metric-label">Units in stock</span><strong id="analytics-units">0</strong><small>Across sample products</small></article>
+                    <article class="admin-metric"><span class="admin-metric-label">Active coupons</span><strong id="analytics-coupons">0</strong><small>Browser-only demo codes</small></article>
+                </div>
+                <div class="admin-panel"><div class="admin-panel-heading"><div><p class="eyebrow">REVENUE TREND</p><h3>Illustrative weekly sales</h3></div></div><div class="sales-chart sales-chart-large" aria-label="Illustrative weekly demo revenue chart"><div class="chart-y-labels"><span>$600</span><span>$400</span><span>$200</span><span>$0</span></div><div class="chart-columns"><div class="chart-column"><span class="chart-bar chart-bar-35"></span><span>Mon</span></div><div class="chart-column"><span class="chart-bar chart-bar-58"></span><span>Tue</span></div><div class="chart-column"><span class="chart-bar chart-bar-43"></span><span>Wed</span></div><div class="chart-column"><span class="chart-bar chart-bar-78"></span><span>Thu</span></div><div class="chart-column"><span class="chart-bar chart-bar-61"></span><span>Fri</span></div><div class="chart-column"><span class="chart-bar chart-bar-92"></span><span>Sat</span></div><div class="chart-column"><span class="chart-bar chart-bar-48"></span><span>Sun</span></div></div></div><p class="admin-footnote">Connect an order database to replace illustrative figures with real-time sales and product metrics.</p></div>
+            </section>
+
+            <section class="admin-view" id="view-coupons" aria-labelledby="coupons-title" hidden>
+                <div class="admin-section-intro"><div><p class="eyebrow">PROMOTIONS</p><h2 id="coupons-title">Coupon generator</h2></div></div>
+                <div class="admin-coupon-layout">
+                    <form class="admin-panel coupon-form" id="coupon-form"><p class="eyebrow">CREATE A DEMO DISCOUNT</p><h3>New coupon</h3><label>Discount (%)<input type="number" name="discount" min="1" max="90" value="10" required></label><label>Campaign label<input type="text" name="label" maxlength="40" placeholder="e.g. Launch offer" required></label><button class="admin-button admin-button-primary" type="submit">Generate coupon code</button><p class="admin-footnote">Codes are examples only and are not connected to checkout.</p></form>
+                    <div class="admin-panel"><div class="admin-panel-heading"><div><p class="eyebrow">DEMO PROMOTIONS</p><h3>Generated coupons</h3></div></div><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>CODE</th><th>CAMPAIGN</th><th>DISCOUNT</th><th>STATUS</th></tr></thead><tbody id="coupon-rows"></tbody></table></div></div>
+                </div>
+            </section>
+
+            <section class="admin-view" id="view-accounts" aria-labelledby="accounts-title" hidden>
+                <div class="admin-section-intro"><div><p class="eyebrow">CUSTOMER DIRECTORY</p><h2 id="accounts-title">User accounts</h2></div><span class="demo-tag">FICTIONAL SAMPLE USERS</span></div>
+                <div class="admin-warning"><strong>Sample profiles only.</strong> No real customer information or account controls are connected.</div>
+                <div class="admin-panel"><div class="admin-panel-heading"><div><p class="eyebrow">ACCOUNT MANAGEMENT</p><h3>Customer access</h3></div></div><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>CUSTOMER</th><th>EMAIL</th><th>JOINED</th><th>ORDERS</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="account-rows"></tbody></table></div></div>
+            </section>
+
+            <section class="admin-view" id="view-integrations" aria-labelledby="integrations-title" hidden>
+                <div class="admin-section-intro"><div><p class="eyebrow">API CONNECTION POINTS</p><h2 id="integrations-title">Integration readiness</h2></div><span class="demo-tag">NO LIVE CONNECTIONS</span></div>
+                <div class="admin-warning"><strong>Backend required:</strong> this static prototype makes no API requests. Add a secured server/API before enabling integrations. Never place provider secrets in HTML, JavaScript, or browser storage.</div>
+                <div class="integration-grid">
+                    <article class="admin-panel integration-card integration-priority">
+                        <div class="integration-card-heading"><span class="payment-icon bitcoin-icon" aria-hidden="true">₿</span><span class="provider-offline">PLANNED FIRST</span></div>
+                        <p class="eyebrow">PAYMENT GATEWAY</p><h3>Bitcoin</h3>
+                        <p class="integration-description">Start with a Bitcoin payment provider. Select the gateway and confirm its supported network and webhook contract before connecting.</p>
+                        <div class="integration-route"><small>SERVER CHECKOUT</small><code>POST /api/payments/bitcoin/intents</code></div>
+                        <div class="integration-route"><small>PROVIDER WEBHOOK</small><code>POST /api/webhooks/bitcoin</code></div>
+                        <p class="integration-footnote">Verify payment server-side from signed provider events. Keep signing secrets server-only and make webhook processing idempotent.</p>
+                    </article>
+                    <article class="admin-panel integration-card">
+                        <div class="integration-card-heading"><span class="payment-icon mpesa-icon" aria-hidden="true">M</span><span class="provider-offline">NOT CONNECTED</span></div>
+                        <p class="eyebrow">PAYMENT GATEWAYS</p><h3>Pi Network · M-Pesa · Bank</h3>
+                        <p class="integration-description">Add each provider behind server-side adapters. Bank transfer needs a documented manual proof/reconciliation flow unless your bank supplies a verification API.</p>
+                        <div class="integration-route"><small>SHARED SERVER CONTRACT</small><code>POST /api/payments/{method}/intents</code></div>
+                        <div class="integration-route"><small>STATUS LOOKUP</small><code>GET /api/orders/{orderId}/payment</code></div>
+                    </article>
+                    <article class="admin-panel integration-card">
+                        <div class="integration-card-heading"><span class="integration-icon" aria-hidden="true">▦</span><span class="provider-offline">NOT CONNECTED</span></div>
+                        <p class="eyebrow">INVENTORY MANAGEMENT</p><h3>Shared stock service</h3>
+                        <p class="integration-description">Use one authoritative product and stock service across Beats, Bites, Reefer Collection, and Donz &amp; Dolls.</p>
+                        <div class="integration-route"><small>CATALOG</small><code>GET /api/products?category={category}</code></div>
+                        <div class="integration-route"><small>ADMIN STOCK UPDATE</small><code>PATCH /api/admin/products/{productId}/stock</code></div>
+                        <p class="integration-footnote">Require authenticated admin access, input validation, and atomic stock reservation at order creation.</p>
+                    </article>
+                    <article class="admin-panel integration-card">
+                        <div class="integration-card-heading"><span class="integration-icon" aria-hidden="true">✉</span><span class="provider-offline">UI ONLY</span></div>
+                        <p class="eyebrow">EMAIL MARKETING</p><h3>Newsletter provider</h3>
+                        <p class="integration-description">The storefront signup preview is not connected. Choose a provider such as Mailchimp or Brevo and collect consent through a server endpoint.</p>
+                        <div class="integration-route"><small>SUBSCRIPTION</small><code>POST /api/newsletter/subscriptions</code></div>
+                        <p class="integration-footnote">Store provider credentials server-side. Add consent, unsubscribe, and confirmation handling before collecting real subscribers.</p>
+                    </article>
+                    <article class="admin-panel integration-card">
+                        <div class="integration-card-heading"><span class="integration-icon" aria-hidden="true">▥</span><span class="provider-offline">DISABLED</span></div>
+                        <p class="eyebrow">ANALYTICS</p><h3>No tracking enabled</h3>
+                        <p class="integration-description">No Google Analytics or third-party tracking scripts are installed. Admin charts are illustrative sample data.</p>
+                        <div class="integration-route"><small>FUTURE OPTIONS</small><code>GA4 Measurement ID or first-party events API</code></div>
+                        <p class="integration-footnote">Choose analytics and consent requirements before adding tracking. Do not send payment details or personal data in analytics events.</p>
+                    </article>
+                    <article class="admin-panel integration-card">
+                        <div class="integration-card-heading"><span class="integration-icon" aria-hidden="true">⌑</span><span class="provider-offline">REQUIRED FOUNDATION</span></div>
+                        <p class="eyebrow">BACKEND &amp; SECURITY</p><h3>Secure API foundation</h3>
+                        <p class="integration-description">The current project is a static website. A backend is required for admin login, customer accounts, orders, coupon validation, and shared inventory.</p>
+                        <div class="integration-route"><small>ADMIN SESSION</small><code>Secure server-side authentication required</code></div>
+                        <p class="integration-footnote">Use HTTPS, role-based authorization, server-side validation, rate limiting, and protected secrets before production launch.</p>
+                    </article>
+                </div>
+            </section>
+            <footer class="admin-footer"><span>WE GET IT DONE NO MATTER WHAT!!</span><a href="index.html">Return to storefront ↗</a></footer>
+        </main>
+    </div>
+    <script src="assets/admin.js"></script>
+</body>
+</html>
